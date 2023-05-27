@@ -20,9 +20,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public final class CountryYearFormCreator implements FormCreator
-{
-	private static final DialogueDisplayer DIALOGUE_DISPLAYER = new DialogueDisplayer();
-	
+{	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void createFormWindow(GraphController graphController, String measureName)
@@ -53,7 +51,7 @@ public final class CountryYearFormCreator implements FormCreator
 				
 				if (minYearString == null || minYearString.isEmpty() || !isInteger(minYearString))
 				{
-					DIALOGUE_DISPLAYER.displayDialogue("Invalid min year.");
+					DialogueDisplayer.getInstance().displayDialogue("Invalid min year.");
 					return;
 				}
 				
@@ -62,7 +60,7 @@ public final class CountryYearFormCreator implements FormCreator
 				
 				if (maxYearString == null || maxYearString.isEmpty() || !isInteger(maxYearString))
 				{
-					DIALOGUE_DISPLAYER.displayDialogue("Invalid max year.");
+					DialogueDisplayer.getInstance().displayDialogue("Invalid max year.");
 					return;
 				}
 				
@@ -71,13 +69,13 @@ public final class CountryYearFormCreator implements FormCreator
 				
 				if (maxYear < minYear)
 				{
-					DIALOGUE_DISPLAYER.displayDialogue("Max year shouldn't be lower than min year");
+					DialogueDisplayer.getInstance().displayDialogue("Max year shouldn't be lower than min year");
 					return;
 				}
 				
 				if (countryChoiceBox.getSelectionModel().isEmpty())
 				{
-					DIALOGUE_DISPLAYER.displayDialogue("You should select a country first.");
+					DialogueDisplayer.getInstance().displayDialogue("You should select a country first.");
 					return;
 				}
 				final String countryName = countryChoiceBox.getSelectionModel().getSelectedItem().trim().intern();

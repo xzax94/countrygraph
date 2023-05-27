@@ -23,8 +23,6 @@ import javafx.stage.Stage;
 
 public final class CountryYearAgeSexFormCreator implements FormCreator
 {
-	private static final DialogueDisplayer DIALOGUE_DISPLAYER = new DialogueDisplayer();
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void createFormWindow(GraphController graphController, String measureName)
@@ -60,7 +58,7 @@ public final class CountryYearAgeSexFormCreator implements FormCreator
 				
 				if (minYearString == null || minYearString.isEmpty() || !isInteger(minYearString))
 				{
-					DIALOGUE_DISPLAYER.displayDialogue("Invalid min year.");
+					DialogueDisplayer.getInstance().displayDialogue("Invalid min year.");
 					return;
 				}
 				
@@ -69,7 +67,7 @@ public final class CountryYearAgeSexFormCreator implements FormCreator
 				
 				if (maxYearString == null || maxYearString.isEmpty() || !isInteger(maxYearString))
 				{
-					DIALOGUE_DISPLAYER.displayDialogue("Invalid max year.");
+					DialogueDisplayer.getInstance().displayDialogue("Invalid max year.");
 					return;
 				}
 				
@@ -78,7 +76,7 @@ public final class CountryYearAgeSexFormCreator implements FormCreator
 				
 				if (maxYear < minYear)
 				{
-					DIALOGUE_DISPLAYER.displayDialogue("Max year shouldn't be lower than min year");
+					DialogueDisplayer.getInstance().displayDialogue("Max year shouldn't be lower than min year");
 					return;
 				}
 				
@@ -87,7 +85,7 @@ public final class CountryYearAgeSexFormCreator implements FormCreator
 				
 				if (minAgeString == null || minAgeString.isEmpty() || !isInteger(minAgeString))
 				{
-					DIALOGUE_DISPLAYER.displayDialogue("Invalid min age.");
+					DialogueDisplayer.getInstance().displayDialogue("Invalid min age.");
 					return;
 				}
 				
@@ -96,7 +94,7 @@ public final class CountryYearAgeSexFormCreator implements FormCreator
 				
 				if (maxAgeString == null || maxAgeString.isEmpty() || !isInteger(maxAgeString))
 				{
-					DIALOGUE_DISPLAYER.displayDialogue("Invalid max age.");
+					DialogueDisplayer.getInstance().displayDialogue("Invalid max age.");
 					return;
 				}
 				
@@ -105,7 +103,7 @@ public final class CountryYearAgeSexFormCreator implements FormCreator
 				
 				if (maxAge < minAge)
 				{
-					DIALOGUE_DISPLAYER.displayDialogue("Max age shouldn't be lower than min age");
+					DialogueDisplayer.getInstance().displayDialogue("Max age shouldn't be lower than min age");
 					return;
 				}				
 				
