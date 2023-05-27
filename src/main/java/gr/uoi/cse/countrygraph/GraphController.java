@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Stream;
 
 import gr.uoi.cse.countrygraph.chart.ChartType;
 import gr.uoi.cse.countrygraph.chart.strategy.ChartCreationStrategy;
@@ -16,8 +15,6 @@ import gr.uoi.cse.countrygraph.decorator.ViewDecorator;
 import gr.uoi.cse.countrygraph.dialogue.DialogueDisplayer;
 import gr.uoi.cse.countrygraph.form.FormCreator;
 import gr.uoi.cse.countrygraph.form.FormCreatorFactory;
-import gr.uoi.cse.countrygraph.measure.Measure;
-import gr.uoi.cse.countrygraph.measure.MeasureCache;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
 import gr.uoi.cse.countrygraph.measure.MeasureRequestFormatter;
 import javafx.fxml.FXML;
