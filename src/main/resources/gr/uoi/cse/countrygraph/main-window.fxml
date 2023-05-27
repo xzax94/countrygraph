@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.uoi.cse.countrygraph.GraphController">
+   <children>
+      <Button layoutX="413.0" layoutY="90.0" mnemonicParsing="false" onAction="#onAddMeasureButtonClick" text="Add measure" />
+      <Label layoutX="23.0" layoutY="94.0" prefHeight="17.0" prefWidth="135.0" text="Select Measure Type" />
+      <ChoiceBox fx:id="measureNameChoiceBox" layoutX="186.0" layoutY="90.0" prefHeight="25.0" prefWidth="187.0" />
+      <ListView fx:id="measureListView" layoutX="76.0" layoutY="130.0" prefHeight="302.0" prefWidth="623.0" />
+      <Button layoutX="391.0" layoutY="465.0" mnemonicParsing="false" onAction="#onCreateGraphRequest" prefHeight="25.0" prefWidth="223.0" text="Create Graph" />
+      <ChoiceBox fx:id="chartTypeChoiceBox" layoutX="152.0" layoutY="465.0" prefHeight="25.0" prefWidth="187.0" />
+   </children>
+</AnchorPane>

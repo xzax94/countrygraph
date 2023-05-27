@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="99.0" layoutY="81.0" prefHeight="17.0" prefWidth="96.0" text="Select Country:" />
+      <ChoiceBox fx:id="countryChoiceBox" layoutX="212.0" layoutY="77.0" prefWidth="150.0" />
+      <Label layoutX="99.0" layoutY="127.0" prefHeight="17.0" prefWidth="96.0" text="min year:" />
+      <Label layoutX="99.0" layoutY="169.0" prefHeight="17.0" prefWidth="96.0" text="max year:" />
+      <TextField fx:id="minYearTextField" layoutX="212.0" layoutY="123.0" />
+      <TextField fx:id="maxYearTextField" layoutX="213.0" layoutY="165.0" />
+      <Button fx:id="addMeasureButton" layoutX="115.0" layoutY="428.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="262.0" text="Add Measure" />
+      <Label fx:id="measureLabel" alignment="CENTER" layoutX="158.0" layoutY="23.0" prefHeight="25.0" prefWidth="176.0" text="Measure Label" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
