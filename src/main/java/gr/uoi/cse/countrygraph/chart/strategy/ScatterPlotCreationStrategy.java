@@ -5,6 +5,7 @@ import java.util.List;
 import gr.uoi.cse.countrygraph.GraphController;
 import gr.uoi.cse.countrygraph.dialogue.DialogueDisplayer;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
+
 public final class ScatterPlotCreationStrategy implements ChartCreationStrategy
 {
 	private static final int MAX_SCATTER_PLOT_MEASURES = 2;

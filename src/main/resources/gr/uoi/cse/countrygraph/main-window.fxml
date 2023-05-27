@@ -12,7 +12,8 @@
       <Label layoutX="23.0" layoutY="94.0" prefHeight="17.0" prefWidth="135.0" text="Select Measure Type" />
       <ChoiceBox fx:id="measureNameChoiceBox" layoutX="186.0" layoutY="90.0" prefHeight="25.0" prefWidth="187.0" />
       <ListView fx:id="measureListView" layoutX="76.0" layoutY="130.0" prefHeight="302.0" prefWidth="623.0" />
-      <Button layoutX="391.0" layoutY="465.0" mnemonicParsing="false" onAction="#onCreateGraphRequest" prefHeight="25.0" prefWidth="223.0" text="Create Graph" />
-      <ChoiceBox fx:id="chartTypeChoiceBox" layoutX="152.0" layoutY="465.0" prefHeight="25.0" prefWidth="187.0" />
+      <Button layoutX="240.0" layoutY="465.0" mnemonicParsing="false" onAction="#onCreateGraphRequest" prefHeight="25.0" prefWidth="223.0" text="Create Graph" />
+      <ChoiceBox fx:id="chartTypeChoiceBox" layoutX="29.0" layoutY="465.0" prefHeight="25.0" prefWidth="187.0" />
+      <Button layoutX="483.0" layoutY="465.0" mnemonicParsing="false" onAction="#onClearMeasuresRequest" prefHeight="25.0" prefWidth="223.0" text="Clear Measures" />
    </children>
 </AnchorPane>

@@ -75,4 +75,11 @@ public class GraphController implements Initializable
 		final ChartCreationStrategy chartCreationStrategy = ChartCreationStrategyCache.getInstance().getChartCreationStrategyByChartType(chartType);
 		chartCreationStrategy.createChart(this);
 	}
+	
+	@FXML
+	private void onClearMeasuresRequest()
+	{
+		measureRequestList.clear();
+		measureListView.getItems().clear();
+	}
 }

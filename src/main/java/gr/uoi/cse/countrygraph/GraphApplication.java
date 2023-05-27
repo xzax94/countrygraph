@@ -36,6 +36,6 @@ public class GraphApplication extends Application
     public static void main(String[] args) 
     {
     	APPLICATION_LOADERS.forEach(ApplicationLoader::load);
-        launch();
+    	Application.launch(GraphApplication.class, args);
     }
 }
