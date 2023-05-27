@@ -10,6 +10,9 @@ import java.util.stream.Stream;
 import gr.uoi.cse.countrygraph.chart.ChartType;
 import gr.uoi.cse.countrygraph.chart.strategy.ChartCreationStrategy;
 import gr.uoi.cse.countrygraph.chart.strategy.ChartCreationStrategyCache;
+import gr.uoi.cse.countrygraph.decorator.ChartTypeChoiceBoxDecorator;
+import gr.uoi.cse.countrygraph.decorator.MeasureNameChoiceBoxDecorator;
+import gr.uoi.cse.countrygraph.decorator.ViewDecorator;
 import gr.uoi.cse.countrygraph.dialogue.DialogueDisplayer;
 import gr.uoi.cse.countrygraph.form.FormCreator;
 import gr.uoi.cse.countrygraph.form.FormCreatorFactory;
@@ -26,6 +29,7 @@ import lombok.Data;
 @Data
 public class GraphController implements Initializable
 {
+	private static final List<ViewDecorator<GraphController>> VIEW_DECORATORS = List.of(new MeasureNameChoiceBoxDecorator(), new ChartTypeChoiceBoxDecorator());
 	private static final FormCreatorFactory FORM_CREATOR_FACTORY = new FormCreatorFactory();
 	private static final DialogueDisplayer DIALOGUE_DISPLAYER = new DialogueDisplayer();
 	private static final MeasureRequestFormatter MEASURE_REQUEST_FORMATTER = new MeasureRequestFormatter();
@@ -57,19 +61,7 @@ public class GraphController implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
-		final List<String> measureNames = MeasureCache
-				.getInstance()
-				.getMeasureList()
-				.stream()
-				.map(Measure::getMeasureDescription)
-				.toList();
-		
-		measureNameChoiceBox.getItems().addAll(measureNames);
-		measureNameChoiceBox.getSelectionModel().select(0);
-		
-		final List<String> chartTypeList = Stream.of(ChartType.values()).map(ChartType::getName).toList();
-		chartTypeChoiceBox.getItems().addAll(chartTypeList);
-		chartTypeChoiceBox.getSelectionModel().select(0);
+		VIEW_DECORATORS.forEach(viewDecorator -> viewDecorator.decorateView(this));
 	}
 	
 	public void addMeasureRequest(MeasureRequest measureRequest) 
