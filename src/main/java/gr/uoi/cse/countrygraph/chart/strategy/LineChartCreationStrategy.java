@@ -27,8 +27,6 @@ import javafx.stage.Stage;
 
 public final class LineChartCreationStrategy implements ChartCreationStrategy
 {
-	private static final MeasureRequestFormatter MEASURE_REQUEST_FORMATTER = new MeasureRequestFormatter();
-
 	@Override
 	public void createChart(GraphController graphController) 
 	{
@@ -45,7 +43,7 @@ public final class LineChartCreationStrategy implements ChartCreationStrategy
 			for (final MeasureRequest measureRequest : graphController.getMeasureRequestList())
 			{
 				final XYChart.Series<String, Number> series = new XYChart.Series<>();
-				series.setName(MEASURE_REQUEST_FORMATTER.formatMeasureRequest(measureRequest));
+				series.setName(MeasureRequestFormatter.getInstance().formatMeasureRequest(measureRequest));
 				final Measure measure = MeasureCache.getInstance().getMeasureByDescription(measureRequest.getMeasureDescription());
 				final String tableName = measure.getTableName();
 				final QueryFactory queryFactory = new QueryFactory();
