@@ -11,6 +11,10 @@ import javafx.stage.Stage;
 
 public final class DialogueDisplayer
 {
+	private DialogueDisplayer()
+	{
+	}
+	
 	public final void displayDialogue(String message) 
     {
     	final Stage dialogStage = new Stage();
@@ -27,4 +31,14 @@ public final class DialogueDisplayer
     	dialogStage.setScene(new Scene(vbox));
     	dialogStage.show();
     }
+	
+	public static final DialogueDisplayer getInstance()
+	{
+		return SingletonHolder.INSTANCE;
+	}
+	
+	private static final class SingletonHolder
+	{
+		private static final DialogueDisplayer INSTANCE = new DialogueDisplayer();
+	}
 }

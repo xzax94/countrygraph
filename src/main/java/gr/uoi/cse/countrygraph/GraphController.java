@@ -28,8 +28,6 @@ public class GraphController implements Initializable
 {
 	private static final List<ViewDecorator<GraphController>> VIEW_DECORATORS = List.of(new MeasureNameChoiceBoxDecorator(), new ChartTypeChoiceBoxDecorator());
 	private static final FormCreatorFactory FORM_CREATOR_FACTORY = new FormCreatorFactory();
-	private static final DialogueDisplayer DIALOGUE_DISPLAYER = new DialogueDisplayer();
-	private static final MeasureRequestFormatter MEASURE_REQUEST_FORMATTER = new MeasureRequestFormatter();
 	private final List<MeasureRequest> measureRequestList = new ArrayList<>();
 	
 	@FXML
@@ -46,7 +44,7 @@ public class GraphController implements Initializable
     {
     	if (measureNameChoiceBox.getSelectionModel().isEmpty())
     	{
-    		DIALOGUE_DISPLAYER.displayDialogue("You need to select a measure first.");
+    		DialogueDisplayer.getInstance().displayDialogue("You need to select a measure first.");
     		return;
     	}
     	
@@ -65,7 +63,7 @@ public class GraphController implements Initializable
 	{
 		measureRequestList.add(measureRequest);
 		Collections.sort(measureRequestList);
-		final String formattedMeasure = MEASURE_REQUEST_FORMATTER.formatMeasureRequest(measureRequest);
+		final String formattedMeasure = MeasureRequestFormatter.getInstance().formatMeasureRequest(measureRequest);
 		measureListView.getItems().add(formattedMeasure);
 	}
 	

@@ -5,6 +5,10 @@ import gr.uoi.cse.countrygraph.country.CountryCache;
 
 public final class MeasureRequestFormatter
 {
+	private MeasureRequestFormatter()
+	{
+	}
+	
 	public String formatMeasureRequest(MeasureRequest measureRequest)
 	{
 		final Country country = CountryCache.getInstance().getCountryById(measureRequest.getCountryId());
@@ -45,5 +49,15 @@ public final class MeasureRequestFormatter
 				measureRequest.getMinYear(),
 				measureRequest.getMaxYear()
 				); 
+	}
+	
+	public static final MeasureRequestFormatter getInstance()
+	{
+		return SingletonHolder.INSTANCE;
+	}
+	
+	private static final class SingletonHolder
+	{
+		private static final MeasureRequestFormatter INSTANCE = new MeasureRequestFormatter();
 	}
 }
