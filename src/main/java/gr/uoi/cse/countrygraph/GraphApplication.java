@@ -38,5 +38,4 @@ public class GraphApplication extends Application
     	APPLICATION_LOADERS.forEach(ApplicationLoader::load);
         launch();
     }
-    
 }
