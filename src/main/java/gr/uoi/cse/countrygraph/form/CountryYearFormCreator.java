@@ -22,8 +22,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public final class CountryYearFormCreator implements FormCreator
-{	
-	@SuppressWarnings("unchecked")
+{
 	@Override
 	public void createFormWindow(GraphController graphController, String measureName)
 	{

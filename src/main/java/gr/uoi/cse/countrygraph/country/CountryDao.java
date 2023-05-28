@@ -16,15 +16,15 @@ public class CountryDao
 	{
 		final List<Country> countryList = new ArrayList<>();
 		try (final Connection connection = ConnectionFactory.getInstance().createConnection();
-				final PreparedStatement statement = connection.prepareStatement(SELECT_QUERY);
-				final ResultSet set = statement.executeQuery())
+				final PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
+				final ResultSet resultSet = preparedStatement.executeQuery())
 		{
-			while (set.next())
+			while (resultSet.next())
 			{
 				final Country country = Country
 						.builder()
-						.id(set.getInt("country_id"))
-						.displayName(set.getString("display_name"))
+						.id(resultSet.getInt("country_id"))
+						.displayName(resultSet.getString("display_name"))
 						.build();
 				
 				countryList.add(country);

@@ -25,7 +25,6 @@ import javafx.stage.Stage;
 
 public final class CountryYearAgeSexFormCreator implements FormCreator
 {
-	@SuppressWarnings("unchecked")
 	@Override
 	public void createFormWindow(GraphController graphController, String measureName)
 	{

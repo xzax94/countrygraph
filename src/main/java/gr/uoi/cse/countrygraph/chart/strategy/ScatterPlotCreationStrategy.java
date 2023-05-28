@@ -58,6 +58,12 @@ public final class ScatterPlotCreationStrategy implements ChartCreationStrategy
         final ScatterChart<Number, Number> scatterChart = new ScatterChart<>(xAxis, yAxis);
         scatterChart.setTitle(SCATTER_PLOT_TITLE);
 		final List<XYChart.Data<Number, Number>> chartDataList = createChartDataList(firstMeasureRequest, secondMeasureRequest);
+		if (chartDataList.isEmpty())
+		{
+			DialogueDisplayer.getInstance().displayDialogue(String.format("These 2 measures have no common enties for years %d-%d", minYear, maxYear));
+			return;
+		}
+		
 		final XYChart.Series<Number, Number> series = new XYChart.Series<>();
 		for (final XYChart.Data<Number, Number> chartData : chartDataList)
 			series.getData().add(chartData);
