@@ -9,6 +9,8 @@ import gr.uoi.cse.countrygraph.country.Country;
 import gr.uoi.cse.countrygraph.country.CountryCache;
 import gr.uoi.cse.countrygraph.dialogue.DialogueDisplayer;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
+import gr.uoi.cse.countrygraph.table.TableMetadata;
+import gr.uoi.cse.countrygraph.table.TableMetadataCache;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -102,6 +104,7 @@ public final class CountryYearAgeFormCreator implements FormCreator
 				
 				final String countryName = countryChoiceBox.getSelectionModel().getSelectedItem().trim().intern();
 				final Country country = CountryCache.getInstance().getCountryByName(countryName);
+				final TableMetadata tableMetadata = TableMetadataCache.getInstance().getTableMetadataByDescription(measureName);
 				
 				final MeasureRequest measureRequest = MeasureRequest
 						.builder()
@@ -110,7 +113,8 @@ public final class CountryYearAgeFormCreator implements FormCreator
 						.maxYear(maxYear)
 						.minAge(minAge)
 						.maxAge(maxAge)
-						.measureDescription(measureName)
+						.tableMetadata(tableMetadata)
+						//.measureDescription(measureName)
 						.build();
 				
 				graphController.addMeasureRequest(measureRequest);

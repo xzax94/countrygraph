@@ -30,11 +30,11 @@ public class ScatterChartExample extends Application {
         series.setName("Data Points");
 
         // Add data to the series
-        series.getData().add(new XYChart.Data<>(1, 4));
-        series.getData().add(new XYChart.Data<>(2, 6));
-        series.getData().add(new XYChart.Data<>(3, 8));
-        series.getData().add(new XYChart.Data<>(4, 5));
-        series.getData().add(new XYChart.Data<>(5, 10));
+        series.getData().add(new XYChart.Data<>(1.5f, 4.2f));
+        series.getData().add(new XYChart.Data<>(2.2f, 6.2f));
+        series.getData().add(new XYChart.Data<>(3.2f, 8.2f));
+        series.getData().add(new XYChart.Data<>(4.2f, 5.2f));
+        series.getData().add(new XYChart.Data<>(5.2f, 10.2f));
 
         // Add the series to the chart
         

@@ -11,6 +11,8 @@ import gr.uoi.cse.countrygraph.country.CountryCache;
 import gr.uoi.cse.countrygraph.dialogue.DialogueDisplayer;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
 import gr.uoi.cse.countrygraph.sex.Sex;
+import gr.uoi.cse.countrygraph.table.TableMetadata;
+import gr.uoi.cse.countrygraph.table.TableMetadataCache;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -89,6 +91,7 @@ public final class CountryYearSexFormCreator implements FormCreator
 				final Country country = CountryCache.getInstance().getCountryByName(countryName);
 				final String sexString = sexChoiceBox.getSelectionModel().getSelectedItem().trim().intern();
 				final Sex sex = Sex.findByName(sexString);
+				final TableMetadata tableMetadata = TableMetadataCache.getInstance().getTableMetadataByDescription(measureName);
 				
 				final MeasureRequest measureRequest = MeasureRequest
 						.builder()
@@ -96,7 +99,8 @@ public final class CountryYearSexFormCreator implements FormCreator
 						.minYear(minYear)
 						.maxYear(maxYear)
 						.sex(sex)
-						.measureDescription(measureName)
+						.tableMetadata(tableMetadata)
+						//.measureDescription(measureName)
 						.build();
 				
 				graphController.addMeasureRequest(measureRequest);

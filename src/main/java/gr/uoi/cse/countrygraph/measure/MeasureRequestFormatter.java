@@ -17,7 +17,7 @@ public final class MeasureRequestFormatter
 			return String.format("%s %s %s, ages(%d-%d), years(%d-%d)",
 					country.getDisplayName(),
 					measureRequest.getSex().getName(),
-					measureRequest.getMeasureDescription(),
+					measureRequest.getTableMetadata().getMeasureDescription(),
 					measureRequest.getMinAge(),
 					measureRequest.getMaxAge(),
 					measureRequest.getMinYear(),
@@ -27,7 +27,7 @@ public final class MeasureRequestFormatter
 		if (measureRequest.getMinAge() != null)
 			return String.format("%s %s, ages(%d-%d), years(%d-%d)",
 					country.getDisplayName(),
-					measureRequest.getMeasureDescription(),
+					measureRequest.getTableMetadata().getMeasureDescription(),
 					measureRequest.getMinAge(),
 					measureRequest.getMaxAge(),
 					measureRequest.getMinYear(),
@@ -38,14 +38,14 @@ public final class MeasureRequestFormatter
 			return String.format("%s %s %s, years(%d-%d)",
 					country.getDisplayName(),
 					measureRequest.getSex().getName(),
-					measureRequest.getMeasureDescription(),
+					measureRequest.getTableMetadata().getMeasureDescription(),
 					measureRequest.getMinYear(),
 					measureRequest.getMaxYear()
 					); 
 		
 		return String.format("%s %s, years(%d-%d)",
 				country.getDisplayName(),
-				measureRequest.getMeasureDescription(),
+				measureRequest.getTableMetadata().getMeasureDescription(),
 				measureRequest.getMinYear(),
 				measureRequest.getMaxYear()
 				); 

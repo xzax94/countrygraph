@@ -1,6 +1,7 @@
 package gr.uoi.cse.countrygraph.measure;
 
 import gr.uoi.cse.countrygraph.sex.Sex;
+import gr.uoi.cse.countrygraph.table.TableMetadata;
 import lombok.Builder;
 import lombok.Data;
 
@@ -14,7 +15,7 @@ public final class MeasureRequest implements Comparable<MeasureRequest>
 	private Integer minAge;
 	private Integer maxAge;
 	private Sex sex;
-	private String measureDescription;
+	private TableMetadata tableMetadata;
 	
 	@Override
 	public int compareTo(MeasureRequest measureRequest) 

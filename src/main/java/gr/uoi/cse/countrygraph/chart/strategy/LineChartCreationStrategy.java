@@ -44,7 +44,7 @@ public final class LineChartCreationStrategy implements ChartCreationStrategy
 			{
 				final XYChart.Series<String, Number> series = new XYChart.Series<>();
 				series.setName(MeasureRequestFormatter.getInstance().formatMeasureRequest(measureRequest));
-				final TableMetadata measure = TableMetadataCache.getInstance().getTableMetadataByDescription(measureRequest.getMeasureDescription());
+				final TableMetadata measure = TableMetadataCache.getInstance().getTableMetadataByDescription(measureRequest.getTableMetadata().getMeasureDescription());
 				final String tableName = measure.getTableName();
 				final QueryFactory queryFactory = new QueryFactory();
 				final String query = queryFactory.createNewInstance(tableName);
