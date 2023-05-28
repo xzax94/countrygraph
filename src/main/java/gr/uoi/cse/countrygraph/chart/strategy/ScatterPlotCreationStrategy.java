@@ -1,10 +1,13 @@
 package gr.uoi.cse.countrygraph.chart.strategy;
 
+import java.sql.Connection;
 import java.util.List;
 
 import gr.uoi.cse.countrygraph.GraphController;
+import gr.uoi.cse.countrygraph.connection.ConnectionFactory;
 import gr.uoi.cse.countrygraph.dialogue.DialogueDisplayer;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
+import gr.uoi.cse.countrygraph.statistic.Statistic;
 
 public final class ScatterPlotCreationStrategy implements ChartCreationStrategy
 {
@@ -27,4 +30,5 @@ public final class ScatterPlotCreationStrategy implements ChartCreationStrategy
 			
 		//TODO implement tomorrow
 	}
+	
 }

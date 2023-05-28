@@ -21,5 +21,4 @@ public final class ChartFactory implements Factory<ChartType, XYChart<String, Nu
 		case SCATTER_CHART -> new ScatterChart<>(xAxis, yAxis);
 		};
 	}
-	
 }

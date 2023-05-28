@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import gr.uoi.cse.countrygraph.measure.Measure;
-import gr.uoi.cse.countrygraph.measure.MeasureCache;
 import gr.uoi.cse.countrygraph.resultset.ResultSetMapper;
 import gr.uoi.cse.countrygraph.resultset.ResultSetMapperCache;
 import gr.uoi.cse.countrygraph.resultset.ResultSetMapperFactory;
+import gr.uoi.cse.countrygraph.table.TableMetadataCache;
+import gr.uoi.cse.countrygraph.table.TableMetadata;
 
 public final class ResultSetMapperLoader implements ApplicationLoader
 {
@@ -16,11 +16,11 @@ public final class ResultSetMapperLoader implements ApplicationLoader
 	public void load() 
 	{
 		final ResultSetMapperFactory resultSetMapperFactory = new ResultSetMapperFactory();
-    	final List<Measure> measureList = MeasureCache.getInstance().getMeasureList();
+    	final List<TableMetadata> tableMetadataList = TableMetadataCache.getInstance().getTableMetadataList();
     	final Map<String, ResultSetMapper> resultSetMapperMap = new HashMap<>();
-    	for (final Measure measure : measureList)
+    	for (final TableMetadata tableMetadata : tableMetadataList)
     	{
-    		final String tableName = measure.getTableName();
+    		final String tableName = tableMetadata.getTableName();
     		final ResultSetMapper resultSetMapper = resultSetMapperFactory.createNewInstance(tableName);
     		resultSetMapperMap.put(tableName, resultSetMapper);
     	}

@@ -7,8 +7,8 @@ import java.util.Map;
 import gr.uoi.cse.countrygraph.form.FormCreator;
 import gr.uoi.cse.countrygraph.form.FormCreatorCache;
 import gr.uoi.cse.countrygraph.form.FormCreatorFactory;
-import gr.uoi.cse.countrygraph.measure.Measure;
-import gr.uoi.cse.countrygraph.measure.MeasureCache;
+import gr.uoi.cse.countrygraph.table.TableMetadataCache;
+import gr.uoi.cse.countrygraph.table.TableMetadata;
 
 public final class FormCreatorLoader implements ApplicationLoader
 {
@@ -16,9 +16,9 @@ public final class FormCreatorLoader implements ApplicationLoader
 	public void load() 
 	{
 		final FormCreatorFactory formCreatorFactory = new FormCreatorFactory();
-    	final List<Measure> measureList = MeasureCache.getInstance().getMeasureList();
+    	final List<TableMetadata> measureList = TableMetadataCache.getInstance().getTableMetadataList();
     	final Map<String, FormCreator> formCreatorMap = new HashMap<>();
-    	for (final Measure measure : measureList)
+    	for (final TableMetadata measure : measureList)
     	{
     		final String measureDescription = measure.getMeasureDescription();
     		final FormCreator formCreator = formCreatorFactory.createNewInstance(measureDescription);

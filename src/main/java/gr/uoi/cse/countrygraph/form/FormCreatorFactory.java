@@ -1,16 +1,16 @@
 package gr.uoi.cse.countrygraph.form;
 
 import gr.uoi.cse.countrygraph.factory.Factory;
-import gr.uoi.cse.countrygraph.measure.Measure;
-import gr.uoi.cse.countrygraph.measure.MeasureCache;
+import gr.uoi.cse.countrygraph.table.TableMetadataCache;
+import gr.uoi.cse.countrygraph.table.TableMetadata;
 
 public final class FormCreatorFactory implements Factory<String, FormCreator>
 {
 	@Override
 	public FormCreator createNewInstance(String measureDescription) 
 	{
-		final Measure measure = MeasureCache.getInstance().getMeasureByDescription(measureDescription);
-		final String tableName = measure.getTableName();
+		final TableMetadata tableMetadata = TableMetadataCache.getInstance().getTableMetadataByDescription(measureDescription);
+		final String tableName = tableMetadata.getTableName();
 		
 		return switch(tableName) {
 		case "estimated_gni",
@@ -23,5 +23,4 @@ public final class FormCreatorFactory implements Factory<String, FormCreator>
 		default -> new CountryYearFormCreator();
 		};
 	}
-	
 }

@@ -12,7 +12,6 @@ import gr.uoi.cse.countrygraph.chart.strategy.ChartCreationStrategyCache;
 import gr.uoi.cse.countrygraph.decorator.ChartTypeChoiceBoxDecorator;
 import gr.uoi.cse.countrygraph.decorator.MeasureNameChoiceBoxDecorator;
 import gr.uoi.cse.countrygraph.decorator.ViewDecorator;
-import gr.uoi.cse.countrygraph.dialogue.DialogueDisplayer;
 import gr.uoi.cse.countrygraph.form.FormCreator;
 import gr.uoi.cse.countrygraph.form.FormCreatorFactory;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
@@ -42,12 +41,6 @@ public class GraphController implements Initializable
     @FXML
     private void onAddMeasureButtonClick() 
     {
-    	if (measureNameChoiceBox.getSelectionModel().isEmpty())
-    	{
-    		DialogueDisplayer.getInstance().displayDialogue("You need to select a measure first.");
-    		return;
-    	}
-    	
     	final String selectedMeasureDescription = measureNameChoiceBox.getSelectionModel().getSelectedItem().trim().intern();
     	final FormCreator formCreator = FORM_CREATOR_FACTORY.createNewInstance(selectedMeasureDescription);
 		formCreator.createFormWindow(this, measureNameChoiceBox.getSelectionModel().getSelectedItem());

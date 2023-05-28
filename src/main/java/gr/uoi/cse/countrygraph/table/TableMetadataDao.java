@@ -1,4 +1,4 @@
-package gr.uoi.cse.countrygraph.measure;
+package gr.uoi.cse.countrygraph.table;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,26 +8,27 @@ import java.util.List;
 
 import gr.uoi.cse.countrygraph.connection.ConnectionFactory;
 
-public class MeasureDao
+public class TableMetadataDao
 {
-	private static final String SELECT_QUERY = "SELECT * FROM measures";
+	private static final String SELECT_QUERY = "SELECT * FROM table_metadata";
 	
-	public List<Measure> getMeasureList()
+	public List<TableMetadata> getTableMetadataList()
 	{
-		final List<Measure> measureList = new ArrayList<>();
+		final List<TableMetadata> tableMetadataList = new ArrayList<>();
 		try(final Connection connection = ConnectionFactory.getInstance().createConnection();
 				final PreparedStatement statement = connection.prepareStatement(SELECT_QUERY);
 				final ResultSet set = statement.executeQuery())
 		{
 			while (set.next())
 			{
-				final Measure measure = Measure
+				final TableMetadata tableMetadata = TableMetadata
 						.builder()
 						.measureDescription(set.getString("measure_description"))
 						.tableName(set.getString("table_name"))
+						.statColumnName(set.getString("stat_column_name"))
 						.build();
 				
-				measureList.add(measure);
+				tableMetadataList.add(tableMetadata);
 			}
 		}
 		catch(final Exception e)
@@ -35,6 +36,6 @@ public class MeasureDao
 			e.printStackTrace();
 		}
 		
-		return measureList;
+		return tableMetadataList;
 	}
 }

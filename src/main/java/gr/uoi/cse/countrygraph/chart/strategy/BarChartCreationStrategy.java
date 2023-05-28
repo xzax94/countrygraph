@@ -8,8 +8,6 @@ import java.util.List;
 
 import gr.uoi.cse.countrygraph.GraphController;
 import gr.uoi.cse.countrygraph.connection.ConnectionFactory;
-import gr.uoi.cse.countrygraph.measure.Measure;
-import gr.uoi.cse.countrygraph.measure.MeasureCache;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
 import gr.uoi.cse.countrygraph.measure.MeasureRequestFormatter;
 import gr.uoi.cse.countrygraph.query.QueryFactory;
@@ -18,6 +16,8 @@ import gr.uoi.cse.countrygraph.resultset.ResultSetMapperCache;
 import gr.uoi.cse.countrygraph.statement.PreparedStatementProcessorStrategy;
 import gr.uoi.cse.countrygraph.statement.PreparedStatementProcessorStrategyFactory;
 import gr.uoi.cse.countrygraph.statistic.Statistic;
+import gr.uoi.cse.countrygraph.table.TableMetadataCache;
+import gr.uoi.cse.countrygraph.table.TableMetadata;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -44,8 +44,8 @@ public final class BarChartCreationStrategy implements ChartCreationStrategy
 			{
 				final XYChart.Series<String, Number> series = new XYChart.Series<>();
 				series.setName(MeasureRequestFormatter.getInstance().formatMeasureRequest(measureRequest));
-				final Measure measure = MeasureCache.getInstance().getMeasureByDescription(measureRequest.getMeasureDescription());
-				final String tableName = measure.getTableName();
+				final TableMetadata tableMetadata = TableMetadataCache.getInstance().getTableMetadataByDescription(measureRequest.getMeasureDescription());
+				final String tableName = tableMetadata.getTableName();
 				final QueryFactory queryFactory = new QueryFactory();
 				final String query = queryFactory.createNewInstance(tableName);
 				

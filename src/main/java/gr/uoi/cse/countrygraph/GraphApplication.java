@@ -12,12 +12,12 @@ import gr.uoi.cse.countrygraph.loader.BarChartCreationStrategyLoader;
 import gr.uoi.cse.countrygraph.loader.CountryLoader;
 import gr.uoi.cse.countrygraph.loader.FormCreatorLoader;
 import gr.uoi.cse.countrygraph.loader.ApplicationLoader;
-import gr.uoi.cse.countrygraph.loader.MeasureLoader;
+import gr.uoi.cse.countrygraph.loader.TableMetadataLoader;
 import gr.uoi.cse.countrygraph.loader.ResultSetMapperLoader;
 
 public class GraphApplication extends Application 
 {
-	private static final List<ApplicationLoader> APPLICATION_LOADERS = List.of(new MeasureLoader(),
+	private static final List<ApplicationLoader> APPLICATION_LOADERS = List.of(new TableMetadataLoader(),
 			new CountryLoader(),
 			new FormCreatorLoader(),
 			new ResultSetMapperLoader(),
