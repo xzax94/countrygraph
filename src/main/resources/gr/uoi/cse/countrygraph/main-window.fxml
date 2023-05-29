@@ -6,7 +6,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.uoi.cse.countrygraph.GraphController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gr.uoi.cse.countrygraph.GraphController">
    <children>
       <Button layoutX="413.0" layoutY="90.0" mnemonicParsing="false" onAction="#onAddMeasureButtonClick" text="Add measure" />
       <Label layoutX="23.0" layoutY="94.0" prefHeight="17.0" prefWidth="135.0" text="Select Measure Type" />

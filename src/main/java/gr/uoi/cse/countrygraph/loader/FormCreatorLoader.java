@@ -13,7 +13,7 @@ import gr.uoi.cse.countrygraph.table.TableMetadata;
 public final class FormCreatorLoader implements ApplicationLoader
 {
 	@Override
-	public void load() 
+	public void load()
 	{
 		final FormCreatorFactory formCreatorFactory = new FormCreatorFactory();
     	final List<TableMetadata> measureList = TableMetadataCache.getInstance().getTableMetadataList();

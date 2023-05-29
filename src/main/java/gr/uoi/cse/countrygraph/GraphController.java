@@ -38,6 +38,12 @@ public class GraphController implements Initializable
 	@FXML
 	private ChoiceBox<String> chartTypeChoiceBox;
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) 
+	{
+		VIEW_DECORATORS.forEach(viewDecorator -> viewDecorator.decorateView(this));
+	}
+	
     @FXML
     private void onAddMeasureButtonClick() 
     {
@@ -46,12 +52,6 @@ public class GraphController implements Initializable
 		formCreator.createFormWindow(this, measureNameChoiceBox.getSelectionModel().getSelectedItem());
     }
     
-	@Override
-	public void initialize(URL location, ResourceBundle resources) 
-	{
-		VIEW_DECORATORS.forEach(viewDecorator -> viewDecorator.decorateView(this));
-	}
-	
 	public void addMeasureRequest(MeasureRequest measureRequest) 
 	{
 		measureRequestList.add(measureRequest);
