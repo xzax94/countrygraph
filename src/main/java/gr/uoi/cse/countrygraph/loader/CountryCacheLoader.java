@@ -6,7 +6,7 @@ import gr.uoi.cse.countrygraph.country.Country;
 import gr.uoi.cse.countrygraph.country.CountryCache;
 import gr.uoi.cse.countrygraph.country.CountryDao;
 
-public final class CountryLoader implements ApplicationLoader
+public final class CountryCacheLoader implements ApplicationLoader
 {
 	@Override
 	public void load() 

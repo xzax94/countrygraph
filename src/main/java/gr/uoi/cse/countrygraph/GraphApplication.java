@@ -8,8 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-import gr.uoi.cse.countrygraph.loader.CountryLoader;
-import gr.uoi.cse.countrygraph.loader.FormCreatorLoader;
+import gr.uoi.cse.countrygraph.loader.CountryCacheLoader;
 import gr.uoi.cse.countrygraph.loader.ApplicationLoader;
 import gr.uoi.cse.countrygraph.loader.TableMetadataLoader;
 import gr.uoi.cse.countrygraph.loader.ResultSetMapperLoader;
@@ -17,8 +16,7 @@ import gr.uoi.cse.countrygraph.loader.ResultSetMapperLoader;
 public class GraphApplication extends Application 
 {
 	private static final List<ApplicationLoader> APPLICATION_LOADERS = List.of(new TableMetadataLoader(),
-			new CountryLoader(),
-			new FormCreatorLoader(),
+			new CountryCacheLoader(),
 			new ResultSetMapperLoader());
 	
     @Override
