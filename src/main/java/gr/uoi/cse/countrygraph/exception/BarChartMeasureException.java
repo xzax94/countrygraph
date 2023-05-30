@@ -4,7 +4,7 @@ import gr.uoi.cse.countrygraph.exception.handler.BarChartMeasureExceptionHandler
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@Exception(handler = BarChartMeasureExceptionHandler.class)
+@UncaughtException(handler = BarChartMeasureExceptionHandler.class)
 public final class BarChartMeasureException extends RuntimeException
 {
 	private static final long serialVersionUID = -4329191782922089592L;

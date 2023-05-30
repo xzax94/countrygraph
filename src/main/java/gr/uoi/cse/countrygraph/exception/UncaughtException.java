@@ -9,7 +9,7 @@ import gr.uoi.cse.countrygraph.exception.handler.ExceptionHandler;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Exception
+public @interface UncaughtException
 {
 	Class<? extends ExceptionHandler> handler();
 }

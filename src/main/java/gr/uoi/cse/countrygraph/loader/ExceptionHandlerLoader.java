@@ -6,6 +6,7 @@ import java.util.Map;
 
 import gr.uoi.cse.countrygraph.classcollector.ClassCollector;
 import gr.uoi.cse.countrygraph.exception.ExceptionManager;
+import gr.uoi.cse.countrygraph.exception.UncaughtException;
 import gr.uoi.cse.countrygraph.exception.handler.ExceptionHandler;
 
 public final class ExceptionHandlerLoader implements ApplicationLoader
@@ -21,10 +22,9 @@ public final class ExceptionHandlerLoader implements ApplicationLoader
 		final List<Class<?>> throwableClassList = collectThrowableClassList();
 		for (final Class<?> throwableClass : throwableClassList)
 		{
-			final gr.uoi.cse.countrygraph.exception.Exception exceptionAnnotation = throwableClass
-					.getAnnotation(gr.uoi.cse.countrygraph.exception.Exception.class);
+			final UncaughtException uncaughtExceptionAnnotation = throwableClass.getAnnotation(UncaughtException.class);
 			
-			final Class<? extends ExceptionHandler> exceptionHandlerClass = exceptionAnnotation.handler();
+			final Class<? extends ExceptionHandler> exceptionHandlerClass = uncaughtExceptionAnnotation.handler();
 			try
 			{
 				final ExceptionHandler exceptionHandler = exceptionHandlerClass.getDeclaredConstructor().newInstance();
@@ -46,7 +46,7 @@ public final class ExceptionHandlerLoader implements ApplicationLoader
 		return classCollector
 				.collectClasses(EXCEPTION_PATH)
 				.stream()
-				.filter(c -> c.isAnnotationPresent(gr.uoi.cse.countrygraph.exception.Exception.class))
+				.filter(c -> c.isAnnotationPresent(UncaughtException.class))
 				.toList();
 	}
 }
