@@ -23,7 +23,7 @@ public enum ChartType
 	public static ChartType findByName(String name)
 	{
 		return Stream.of(values())
-				.filter(chartType -> chartType.name.equalsIgnoreCase(name))
+				.filter(chartType -> chartType.getName().equalsIgnoreCase(name))
 				.findAny()
 				.orElse(BAR_CHART);
 	}
