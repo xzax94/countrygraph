@@ -6,7 +6,7 @@ import gr.uoi.cse.countrygraph.measure.MeasureRequest;
 
 public final class ScatterPlotQueryCreationStrategy implements QueryCreationStrategy
 {
-	private static final String QUERY_FORMAT = "SELECT m1.year AS year, m1.%s AS stat1, m2.%s AS stat2 FROM %s m1 JOIN %s m2 ON m1.year = m2.year WHERE %s AND %s AND m1.year BETWEEN %d AND %d;";
+	private static final String QUERY_FORMAT = "SELECT MIN(m1.year) AS min_year, MAX(m1.year) AS max_year, AVG(m1.%s) AS stat1, AVG(m2.%s) AS stat2 FROM %s m1 JOIN %s m2 ON m1.year = m2.year WHERE %s AND %s AND m1.year BETWEEN %d AND %d GROUP BY FLOOR((m1.year-1)/%d) ORDER BY min_year";
 	private static final int FIRST_MEASURE_INDEX = 0;
 	private static final int SECOND_MEASURE_INDEX = 1;
 	
@@ -21,7 +21,8 @@ public final class ScatterPlotQueryCreationStrategy implements QueryCreationStra
 		final WhereClauseFormatter whereClauseFormatter = new WhereClauseFormatter();
 		
 		final StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(String.format(QUERY_FORMAT,
+
+		stringBuilder.append(String.format(QUERY_FORMAT, 
 				firstMeasureRequest.getTableMetadata().getStatColumnName(),
 				secondMeasureRequest.getTableMetadata().getStatColumnName(),
 				firstMeasureRequest.getTableMetadata().getTableName(),
@@ -29,7 +30,10 @@ public final class ScatterPlotQueryCreationStrategy implements QueryCreationStra
 				whereClauseFormatter.formatWhereClause(firstMeasureRequest, "m1"),
 				whereClauseFormatter.formatWhereClause(secondMeasureRequest, "m2"),
 				minYear,
-				maxYear));
+				maxYear,
+				aggregateDivider));
+		
+		System.out.println(stringBuilder.toString());
 		
 		return stringBuilder.toString();
 	}
