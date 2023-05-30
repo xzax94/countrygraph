@@ -13,7 +13,6 @@ public final class ProcessYearAgeStrategy implements PreparedStatementProcessorS
 		preparedStatement.setInt(1, measureRequest.getCountryId());
 		preparedStatement.setInt(2, measureRequest.getMinYear());
 		preparedStatement.setInt(3, measureRequest.getMaxYear());
-		preparedStatement.setInt(4, measureRequest.getMinAge());
-		preparedStatement.setInt(5, measureRequest.getMaxAge());
+		preparedStatement.setInt(4, measureRequest.getAge());
 	}
 }

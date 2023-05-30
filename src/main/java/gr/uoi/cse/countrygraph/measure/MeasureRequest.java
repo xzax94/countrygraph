@@ -12,8 +12,7 @@ public final class MeasureRequest implements Comparable<MeasureRequest>
 	private Integer countryId;
 	private Integer minYear;
 	private Integer maxYear;
-	private Integer minAge;
-	private Integer maxAge;
+	private Integer age;
 	private Sex sex;
 	private TableMetadata tableMetadata;
 	

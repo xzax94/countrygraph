@@ -16,11 +16,9 @@
       <TextField fx:id="maxYearTextField" layoutX="213.0" layoutY="165.0" />
       <Button fx:id="addMeasureButton" layoutX="115.0" layoutY="428.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="262.0" text="Add Measure" />
       <Label fx:id="measureLabel" alignment="CENTER" layoutX="158.0" layoutY="23.0" prefHeight="25.0" prefWidth="176.0" text="Measure Label" textAlignment="CENTER" />
-      <Label layoutX="99.0" layoutY="212.0" prefHeight="17.0" prefWidth="96.0" text="min age:" />
-      <Label layoutX="99.0" layoutY="255.0" prefHeight="17.0" prefWidth="96.0" text="max age:" />
-      <TextField fx:id="minAgeTextField" layoutX="212.0" layoutY="208.0" />
-      <TextField fx:id="maxAgeTextField" layoutX="212.0" layoutY="251.0" />
-      <ChoiceBox fx:id="sexChoiceBox" layoutX="213.0" layoutY="294.0" prefWidth="150.0" />
-      <Label layoutX="99.0" layoutY="298.0" prefHeight="17.0" prefWidth="96.0" text="Sex" />
+      <Label layoutX="99.0" layoutY="212.0" prefHeight="17.0" prefWidth="96.0" text="age:" />
+      <TextField fx:id="ageTextField" layoutX="212.0" layoutY="208.0" />
+      <ChoiceBox fx:id="sexChoiceBox" layoutX="212.0" layoutY="250.0" prefWidth="150.0" />
+      <Label layoutX="99.0" layoutY="254.0" prefHeight="17.0" prefWidth="96.0" text="Sex" />
    </children>
 </AnchorPane>

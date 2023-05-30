@@ -74,32 +74,16 @@ public final class CountryYearAgeFormCreator implements FormCreator
 					return;
 				}
 				
-				final TextField minAgeTextField = (TextField) root.lookup("#minAgeTextField");
-				final String minAgeString = minAgeTextField.getText();
+				final TextField ageTextField = (TextField) root.lookup("#ageTextField");
+				final String ageString = ageTextField.getText();
 				
-				if (minAgeString == null || minAgeString.isEmpty() || !isInteger(minAgeString))
+				if (ageString == null || ageString.isEmpty() || !isInteger(ageString))
 				{
-					DialogueDisplayer.getInstance().displayDialogue("Invalid min age.");
+					DialogueDisplayer.getInstance().displayDialogue("Invalid age.");
 					return;
 				}
 				
-				final TextField maxAgeTextField = (TextField) root.lookup("#maxAgeTextField");
-				final String maxAgeString = maxAgeTextField.getText();
-				
-				if (maxAgeString == null || maxAgeString.isEmpty() || !isInteger(maxAgeString))
-				{
-					DialogueDisplayer.getInstance().displayDialogue("Invalid max age.");
-					return;
-				}
-				
-				final int minAge = Integer.parseInt(minAgeString);
-				final int maxAge = Integer.parseInt(maxAgeString);
-				
-				if (maxAge < minAge)
-				{
-					DialogueDisplayer.getInstance().displayDialogue("Max age shouldn't be lower than min age");
-					return;
-				}				
+				final int age = Integer.parseInt(ageString);		
 				
 				final String countryName = countryChoiceBox.getSelectionModel().getSelectedItem().trim().intern();
 				final Country country = CountryCache.getInstance().getCountryByName(countryName);
@@ -110,10 +94,8 @@ public final class CountryYearAgeFormCreator implements FormCreator
 						.countryId(country.getId())
 						.minYear(minYear)
 						.maxYear(maxYear)
-						.minAge(minAge)
-						.maxAge(maxAge)
+						.age(age)
 						.tableMetadata(tableMetadata)
-						//.measureDescription(measureName)
 						.build();
 				
 				graphController.addMeasureRequest(measureRequest);

@@ -13,23 +13,21 @@ public final class MeasureRequestFormatter
 	{
 		final Country country = CountryCache.getInstance().getCountryById(measureRequest.getCountryId());
 		
-		if (measureRequest.getMinAge() != null && measureRequest.getSex() != null)
-			return String.format("%s %s %s, ages(%d-%d), years(%d-%d)",
+		if (measureRequest.getAge() != null && measureRequest.getSex() != null)
+			return String.format("%s %s %s, age %d, years(%d-%d)",
 					country.getDisplayName(),
 					measureRequest.getSex().getName(),
 					measureRequest.getTableMetadata().getMeasureDescription(),
-					measureRequest.getMinAge(),
-					measureRequest.getMaxAge(),
+					measureRequest.getAge(),
 					measureRequest.getMinYear(),
 					measureRequest.getMaxYear()
 					);  
 		
-		if (measureRequest.getMinAge() != null)
-			return String.format("%s %s, ages(%d-%d), years(%d-%d)",
+		if (measureRequest.getAge() != null)
+			return String.format("%s %s, age %d, years(%d-%d)",
 					country.getDisplayName(),
 					measureRequest.getTableMetadata().getMeasureDescription(),
-					measureRequest.getMinAge(),
-					measureRequest.getMaxAge(),
+					measureRequest.getAge(),
 					measureRequest.getMinYear(),
 					measureRequest.getMaxYear()
 					);  

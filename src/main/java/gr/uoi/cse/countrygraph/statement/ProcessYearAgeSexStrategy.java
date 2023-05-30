@@ -13,8 +13,7 @@ public final class ProcessYearAgeSexStrategy implements PreparedStatementProcess
 		preparedStatement.setInt(1, measureRequest.getCountryId());
 		preparedStatement.setInt(2, measureRequest.getMinYear());
 		preparedStatement.setInt(3, measureRequest.getMaxYear());
-		preparedStatement.setInt(4, measureRequest.getMinAge());
-		preparedStatement.setInt(5, measureRequest.getMaxAge());
-		preparedStatement.setString(6, measureRequest.getSex().toString());
+		preparedStatement.setInt(4, measureRequest.getAge());
+		preparedStatement.setString(5, measureRequest.getSex().toString());
 	}
 }

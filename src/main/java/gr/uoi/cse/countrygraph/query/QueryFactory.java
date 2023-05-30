@@ -5,9 +5,9 @@ import gr.uoi.cse.countrygraph.factory.Factory;
 public final class QueryFactory implements Factory<String, String>
 {
 	private static final String QUERY_BY_YEAR_FORMAT = "SELECT * FROM %s WHERE country_id=? AND year BETWEEN ? and ?";
-	private static final String QUERY_BY_YEAR_AGE_FORMAT = "SELECT * FROM %s WHERE country_id=? AND year BETWEEN ? AND ? AND AGE BETWEEN ? AND ?";
+	private static final String QUERY_BY_YEAR_AGE_FORMAT = "SELECT * FROM %s WHERE country_id=? AND year BETWEEN ? AND ? AND age=?";
 	private static final String QUERY_BY_YEAR_SEX_FORMAT = "SELECT * FROM %s WHERE country_id=? AND year BETWEEN ? AND ? AND sex=?";
-	private static final String QUERY_BY_YEAR_AGE_SEX_FORMAT = "SELECT * FROM midyear_population_by_age_sex WHERE country_id=? AND year BETWEEN ? AND ? AND age BETWEEN ? AND ? AND sex=?";
+	private static final String QUERY_BY_YEAR_AGE_SEX_FORMAT = "SELECT * FROM midyear_population_by_age_sex WHERE country_id=? AND year BETWEEN ? AND ? AND age=? AND sex=?";
 	
 	@Override
 	public String createNewInstance(String tableName)
