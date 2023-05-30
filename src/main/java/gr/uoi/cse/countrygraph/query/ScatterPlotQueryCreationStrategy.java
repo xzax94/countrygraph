@@ -33,8 +33,6 @@ public final class ScatterPlotQueryCreationStrategy implements QueryCreationStra
 				maxYear,
 				aggregateDivider));
 		
-		System.out.println(stringBuilder.toString());
-		
 		return stringBuilder.toString();
 	}
 }
