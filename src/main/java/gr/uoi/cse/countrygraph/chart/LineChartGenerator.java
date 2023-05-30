@@ -27,9 +27,9 @@ import javafx.scene.chart.XYChart.Series;
 public final class LineChartGenerator extends ChartGenerator<String, Number>
 {
 	private static final String TITLE = "Line Chart";
+	private static final int LINE_CHART_MIN_MEASURES = 1;
 	private static final String X_AXIS_TITLE = "Year";
 	private static final String Y_AXIS_TITLE = "Value";
-	private static final int LINE_CHART_MIN_MEASURES = 1;
 	
 	@Override
 	public String getChartTitle() 
@@ -72,7 +72,7 @@ public final class LineChartGenerator extends ChartGenerator<String, Number>
 	}
 
 	@Override
-	public List<Series<String, Number>> getSeriesList(List<MeasureRequest> measureRequestList) 
+	public List<Series<String, Number>> createSeriesList(List<MeasureRequest> measureRequestList) 
 	{
 		final List<XYChart.Series<String, Number>> seriesList = new ArrayList<>();
 		

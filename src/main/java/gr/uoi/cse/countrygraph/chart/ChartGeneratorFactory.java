@@ -10,7 +10,7 @@ public final class ChartGeneratorFactory implements Factory<ChartType, ChartGene
 		return switch(chartType) {
 		case BAR_CHART -> new BarChartGenerator();
 		case LINE_CHART -> new LineChartGenerator();
-		case SCATTER_CHART -> new ScatterPlotGenerator();
+		case SCATTER_PLOT -> new ScatterPlotGenerator();
 		};
 	}
 }

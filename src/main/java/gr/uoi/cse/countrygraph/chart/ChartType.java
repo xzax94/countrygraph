@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 public enum ChartType
 {
 	BAR_CHART("Bar Chart"),
-	SCATTER_CHART("Scatter Plot"),
+	SCATTER_PLOT("Scatter Plot"),
 	LINE_CHART("Line Chart");
 	
 	private final String name;

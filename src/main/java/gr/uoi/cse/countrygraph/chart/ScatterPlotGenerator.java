@@ -19,12 +19,12 @@ import javafx.scene.chart.XYChart.Series;
 public final class ScatterPlotGenerator extends ChartGenerator<Number, Number>
 {
 	private static final String TITLE = "Scatter Plot";
+	private static final int SCATTER_PLOT_MIN_MEASURES = 2;
+	private static final int SCATTER_PLOT_MAX_MEASURES = 2;
 	private static final int FIRST_MEASURE_INDEX = 0;
 	private static final int SECOND_MEASURE_INDEX = 1;
 	private static final String FIRST_MEASURE_STAT_NAME = "stat1";
 	private static final String SECOND_MEASURE_STAT_NAME = "stat2";
-	private static final int SCATTER_PLOT_MIN_MEASURES = 2;
-	private static final int SCATTER_PLOT_MAX_MEASURES = 2;
 	
 	@Override
 	public String getChartTitle() 
@@ -73,7 +73,7 @@ public final class ScatterPlotGenerator extends ChartGenerator<Number, Number>
 	}
 
 	@Override
-	public List<Series<Number, Number>> getSeriesList(List<MeasureRequest> measureRequestList) 
+	public List<Series<Number, Number>> createSeriesList(List<MeasureRequest> measureRequestList) 
 	{
 		final MeasureRequest firstMeasureRequest = measureRequestList.get(FIRST_MEASURE_INDEX);
 		final MeasureRequest secondMeasureRequest = measureRequestList.get(SECOND_MEASURE_INDEX);

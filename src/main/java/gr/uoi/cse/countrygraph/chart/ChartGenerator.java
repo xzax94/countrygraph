@@ -34,7 +34,7 @@ public abstract class ChartGenerator<X, Y>
 		final XYChart<X, Y> chart = createChart(xAxis, yAxis, measureRequestList);
 		chart.setTitle(getChartTitle()); 
 		
-		final List<XYChart.Series<X, Y>> seriesList = getSeriesList(measureRequestList);
+		final List<XYChart.Series<X, Y>> seriesList = createSeriesList(measureRequestList);
 		for (final XYChart.Series<X, Y> series : seriesList)
 			chart.getData().add(series);
 		
@@ -55,6 +55,6 @@ public abstract class ChartGenerator<X, Y>
 	
 	public abstract XYChart<X, Y> createChart(Axis<X> xAxis, Axis<Y> yAxis, List<MeasureRequest> measureRequestList);
 	
-	public abstract List<XYChart.Series<X, Y>> getSeriesList(List<MeasureRequest> measureRequestList);
+	public abstract List<XYChart.Series<X, Y>> createSeriesList(List<MeasureRequest> measureRequestList);
 	
 }
