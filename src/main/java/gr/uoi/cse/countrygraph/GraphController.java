@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import gr.uoi.cse.countrygraph.chart.ChartGenerator;
+import gr.uoi.cse.countrygraph.chart.ChartGeneratorFactory;
 import gr.uoi.cse.countrygraph.chart.ChartType;
-import gr.uoi.cse.countrygraph.chart.strategy.ChartCreationStrategy;
-import gr.uoi.cse.countrygraph.chart.strategy.ChartCreationStrategyCache;
 import gr.uoi.cse.countrygraph.decorator.ChartTypeChoiceBoxDecorator;
 import gr.uoi.cse.countrygraph.decorator.MeasureNameChoiceBoxDecorator;
 import gr.uoi.cse.countrygraph.decorator.ViewDecorator;
@@ -26,7 +26,6 @@ import lombok.Data;
 public class GraphController implements Initializable
 {
 	private static final List<ViewDecorator<GraphController>> VIEW_DECORATORS = List.of(new MeasureNameChoiceBoxDecorator(), new ChartTypeChoiceBoxDecorator());
-	private static final FormCreatorFactory FORM_CREATOR_FACTORY = new FormCreatorFactory();
 	private final List<MeasureRequest> measureRequestList = new ArrayList<>();
 	
 	@FXML
@@ -48,7 +47,8 @@ public class GraphController implements Initializable
     private void onAddMeasureButtonClick() 
     {
     	final String selectedMeasureDescription = measureNameChoiceBox.getSelectionModel().getSelectedItem().trim().intern();
-    	final FormCreator formCreator = FORM_CREATOR_FACTORY.createNewInstance(selectedMeasureDescription);
+    	final FormCreatorFactory formCreatorFactory = new FormCreatorFactory();
+    	final FormCreator formCreator = formCreatorFactory.createNewInstance(selectedMeasureDescription);
 		formCreator.createFormWindow(this, measureNameChoiceBox.getSelectionModel().getSelectedItem());
     }
     
@@ -65,8 +65,9 @@ public class GraphController implements Initializable
 	{
 		final String chartTypeString = chartTypeChoiceBox.getSelectionModel().getSelectedItem();
 		final ChartType chartType = ChartType.findByName(chartTypeString);
-		final ChartCreationStrategy chartCreationStrategy = ChartCreationStrategyCache.getInstance().getChartCreationStrategyByChartType(chartType);
-		chartCreationStrategy.createChart(this);
+		final ChartGeneratorFactory chartGeneratorFactory = new ChartGeneratorFactory();
+		final ChartGenerator<?, ?> chartGenerator = chartGeneratorFactory.createNewInstance(chartType);
+		chartGenerator.generateChart(measureRequestList);
 	}
 	
 	@FXML
