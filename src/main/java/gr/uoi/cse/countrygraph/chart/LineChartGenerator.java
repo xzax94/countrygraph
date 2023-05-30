@@ -10,7 +10,7 @@ import gr.uoi.cse.countrygraph.connection.ConnectionFactory;
 import gr.uoi.cse.countrygraph.exception.LineChartMeasureException;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
 import gr.uoi.cse.countrygraph.measure.MeasureRequestFormatter;
-import gr.uoi.cse.countrygraph.query.LineChartQueryCreator;
+import gr.uoi.cse.countrygraph.query.LineChartQueryCreationStrategy;
 import javafx.scene.chart.Axis;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
@@ -72,8 +72,8 @@ public final class LineChartGenerator extends ChartGenerator<String, Number>
 			for (final MeasureRequest measureRequest : measureRequestList)
 			{
 				final List<XYChart.Data<String, Number>> chartDataList = new ArrayList<>();
-				final LineChartQueryCreator lineChartQueryCreator = new LineChartQueryCreator();
-				final String query = lineChartQueryCreator.createQuery(List.of(measureRequest), aggregateYearDivider);
+				final LineChartQueryCreationStrategy lineChartQueryCreationStrategy = new LineChartQueryCreationStrategy();
+				final String query = lineChartQueryCreationStrategy.createQuery(List.of(measureRequest), aggregateYearDivider);
 				
 				try(final PreparedStatement preparedStatement = connection.prepareStatement(query);
 						final ResultSet resultSet = preparedStatement.executeQuery())

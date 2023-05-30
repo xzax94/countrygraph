@@ -14,7 +14,7 @@ public final class ExceptionHandlerLoader implements ApplicationLoader
 	private static final String EXCEPTION_PATH = "gr.uoi.cse.countrygraph.exception";
 
 	@Override
-	public void load() 
+	public void load()
 	{
 		final ExceptionManager exceptionManager = ExceptionManager.getInstance();
 		final Map<Class<?>, ExceptionHandler> exceptionHandlerMap = new HashMap<>();

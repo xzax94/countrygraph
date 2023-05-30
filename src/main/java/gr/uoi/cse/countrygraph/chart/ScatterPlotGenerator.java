@@ -10,7 +10,7 @@ import gr.uoi.cse.countrygraph.connection.ConnectionFactory;
 import gr.uoi.cse.countrygraph.exception.ScatterPlotMeasureException;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
 import gr.uoi.cse.countrygraph.measure.MeasureRequestFormatter;
-import gr.uoi.cse.countrygraph.query.ScatterPlotQueryCreator;
+import gr.uoi.cse.countrygraph.query.ScatterPlotQueryCreationStrategy;
 import javafx.scene.chart.Axis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
@@ -70,9 +70,8 @@ public final class ScatterPlotGenerator extends ChartGenerator<Number, Number>
 	@Override
 	public List<Series<Number, Number>> createSeriesList(List<MeasureRequest> measureRequestList, int aggregateYearDivider) 
 	{
-		final MeasureRequest firstMeasureRequest = measureRequestList.get(FIRST_MEASURE_INDEX);
-		final MeasureRequest secondMeasureRequest = measureRequestList.get(SECOND_MEASURE_INDEX);
-		final List<XYChart.Data<Number, Number>> chartDataList = createChartDataList(firstMeasureRequest, secondMeasureRequest);
+		
+		final List<XYChart.Data<Number, Number>> chartDataList = createChartDataList(measureRequestList, aggregateYearDivider);
 		
 		final XYChart.Series<Number, Number> series = new XYChart.Series<>();
 		for (final XYChart.Data<Number, Number> chartData : chartDataList)
@@ -81,11 +80,11 @@ public final class ScatterPlotGenerator extends ChartGenerator<Number, Number>
 		return List.of(series);
 	}
 	
-	private final List<XYChart.Data<Number, Number>> createChartDataList(MeasureRequest firstMeasureRequest, MeasureRequest secondMeasureRequest)
+	private final List<XYChart.Data<Number, Number>> createChartDataList(List<MeasureRequest> measureRequestList, int aggregateYearDivider)
 	{
 		final List<XYChart.Data<Number, Number>> chartDataList = new ArrayList<>();
-		final ScatterPlotQueryCreator scatterPlotQueryCreator = new ScatterPlotQueryCreator();
-		final String query = scatterPlotQueryCreator.createQuery(firstMeasureRequest, secondMeasureRequest);
+		final ScatterPlotQueryCreationStrategy scatterPlotQueryCreationStrategy = new ScatterPlotQueryCreationStrategy();
+		final String query = scatterPlotQueryCreationStrategy.createQuery(measureRequestList, aggregateYearDivider);
 		
 		try(final Connection connection = ConnectionFactory.getInstance().createConnection();
 				final PreparedStatement preparedStatement = connection.prepareStatement(query);

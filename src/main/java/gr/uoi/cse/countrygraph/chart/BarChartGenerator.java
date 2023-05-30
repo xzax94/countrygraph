@@ -10,7 +10,7 @@ import gr.uoi.cse.countrygraph.connection.ConnectionFactory;
 import gr.uoi.cse.countrygraph.exception.BarChartMeasureException;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
 import gr.uoi.cse.countrygraph.measure.MeasureRequestFormatter;
-import gr.uoi.cse.countrygraph.query.BarChartQueryCreator;
+import gr.uoi.cse.countrygraph.query.BarChartQueryCreationStrategy;
 import javafx.scene.chart.Axis;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -72,8 +72,8 @@ public final class BarChartGenerator extends ChartGenerator<String, Number>
 			for (final MeasureRequest measureRequest : measureRequestList)
 			{
 				final List<XYChart.Data<String, Number>> chartDataList = new ArrayList<>();
-				final BarChartQueryCreator barChartQueryCreator = new BarChartQueryCreator();
-				final String query = barChartQueryCreator.createQuery(List.of(measureRequest), aggregateYearDivider);
+				final BarChartQueryCreationStrategy barChartQueryCreationStrategy = new BarChartQueryCreationStrategy();
+				final String query = barChartQueryCreationStrategy.createQuery(List.of(measureRequest), aggregateYearDivider);
 				
 				try(final PreparedStatement preparedStatement = connection.prepareStatement(query);
 						final ResultSet resultSet = preparedStatement.executeQuery())
