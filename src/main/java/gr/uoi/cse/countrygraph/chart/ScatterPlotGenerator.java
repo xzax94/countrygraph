@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gr.uoi.cse.countrygraph.connection.ConnectionFactory;
+import gr.uoi.cse.countrygraph.exception.ScatterPlotMeasureException;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
 import gr.uoi.cse.countrygraph.measure.MeasureRequestFormatter;
 import gr.uoi.cse.countrygraph.query.ScatterPlotQueryCreator;
@@ -19,29 +20,23 @@ import javafx.scene.chart.XYChart.Series;
 public final class ScatterPlotGenerator extends ChartGenerator<Number, Number>
 {
 	private static final String TITLE = "Scatter Plot";
-	private static final int SCATTER_PLOT_MIN_MEASURES = 2;
-	private static final int SCATTER_PLOT_MAX_MEASURES = 2;
+	private static final int SCATTER_PLOT_REQUIRED_MEASURES = 2;
 	private static final int FIRST_MEASURE_INDEX = 0;
 	private static final int SECOND_MEASURE_INDEX = 1;
 	private static final String FIRST_MEASURE_STAT_NAME = "stat1";
 	private static final String SECOND_MEASURE_STAT_NAME = "stat2";
 	
 	@Override
-	public String getChartTitle() 
+	public void validateMeasureRequestList(List<MeasureRequest> measureRequestList) 
 	{
-		return TITLE;
+		if (measureRequestList.size() != SCATTER_PLOT_REQUIRED_MEASURES)
+			throw new ScatterPlotMeasureException();
 	}
 	
 	@Override
-	public int getMinMeasures() 
+	public String getChartTitle() 
 	{
-		return SCATTER_PLOT_MIN_MEASURES;
-	}
-
-	@Override
-	public int getMaxMeasures() 
-	{
-		return SCATTER_PLOT_MAX_MEASURES;
+		return TITLE;
 	}
 
 	@Override
@@ -110,4 +105,6 @@ public final class ScatterPlotGenerator extends ChartGenerator<Number, Number>
 		
 		return chartDataList;
 	}
+
+	
 }

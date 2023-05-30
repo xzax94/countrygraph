@@ -61,7 +61,7 @@ public class GraphController implements Initializable
 	}
 	
 	@FXML
-	private void onCreateGraphRequest()
+	private void onCreateGraphRequest() throws Exception
 	{
 		final String chartTypeString = chartTypeChoiceBox.getSelectionModel().getSelectedItem();
 		final ChartType chartType = ChartType.findByName(chartTypeString);

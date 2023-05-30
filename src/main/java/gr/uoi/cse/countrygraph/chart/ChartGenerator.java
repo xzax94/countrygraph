@@ -2,7 +2,6 @@ package gr.uoi.cse.countrygraph.chart;
 
 import java.util.List;
 
-import gr.uoi.cse.countrygraph.dialogue.DialogueDisplayer;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
 import javafx.scene.Scene;
 import javafx.scene.chart.Axis;
@@ -11,22 +10,9 @@ import javafx.stage.Stage;
 
 public abstract class ChartGenerator<X, Y>
 {
-	private static final String MIN_MEASURES_MESSAGE_FORMAT = "At least %d measure(s) are required for %s";
-	private static final String MAX_MEASURES_MESSAGE_FORMAT = "%s has a limit of %d measures";
-	
 	public final void generateChart(List<MeasureRequest> measureRequestList)
 	{
-		if (measureRequestList.size() < getMinMeasures())
-		{
-			DialogueDisplayer.getInstance().displayDialogue(String.format(MIN_MEASURES_MESSAGE_FORMAT, getMinMeasures(), getChartTitle()));
-			return;
-		}
-		
-		if (measureRequestList.size() > getMaxMeasures())
-		{
-			DialogueDisplayer.getInstance().displayDialogue(String.format(MAX_MEASURES_MESSAGE_FORMAT, getChartTitle(), getMaxMeasures()));
-			return;
-		}
+		validateMeasureRequestList(measureRequestList);
 		
 		final Stage stage = new Stage();
 		final Axis<X> xAxis = createXAxis(measureRequestList);
@@ -43,11 +29,9 @@ public abstract class ChartGenerator<X, Y>
 		stage.show();
 	}
 	
-	public abstract String getChartTitle();
+	public abstract void validateMeasureRequestList(List<MeasureRequest> measureRequestList);
 	
-	public abstract int getMinMeasures();
-
-	public abstract int getMaxMeasures();
+	public abstract String getChartTitle();
 	
 	public abstract Axis<X> createXAxis(List<MeasureRequest> measureRequestList);
 	

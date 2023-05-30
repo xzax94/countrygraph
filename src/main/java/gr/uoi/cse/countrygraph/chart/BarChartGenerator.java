@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gr.uoi.cse.countrygraph.connection.ConnectionFactory;
+import gr.uoi.cse.countrygraph.exception.BarChartMeasureException;
 import gr.uoi.cse.countrygraph.measure.MeasureRequest;
 import gr.uoi.cse.countrygraph.measure.MeasureRequestFormatter;
 import gr.uoi.cse.countrygraph.query.QueryFactory;
@@ -27,26 +28,20 @@ import javafx.scene.chart.XYChart.Series;
 public final class BarChartGenerator extends ChartGenerator<String, Number>
 {
 	private static final String TITLE = "Bar Chart";
-	private static final int BAR_CHART_MIN_MEASURES = 1;
 	private static final String X_AXIS_TITLE = "Year";
 	private static final String Y_AXIS_TITLE = "Value";
+	
+	@Override
+	public void validateMeasureRequestList(List<MeasureRequest> measureRequestList) 
+	{
+		if (measureRequestList.isEmpty())
+			throw new BarChartMeasureException();
+	}
 	
 	@Override
 	public String getChartTitle() 
 	{
 		return TITLE;
-	}
-	
-	@Override
-	public int getMinMeasures() 
-	{
-		return BAR_CHART_MIN_MEASURES;
-	}
-
-	@Override
-	public int getMaxMeasures() 
-	{
-		return Integer.MAX_VALUE;
 	}
 
 	@Override

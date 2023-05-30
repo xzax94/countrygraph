@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 import gr.uoi.cse.countrygraph.loader.CountryCacheLoader;
+import gr.uoi.cse.countrygraph.loader.ExceptionHandlerLoader;
 import gr.uoi.cse.countrygraph.loader.ApplicationLoader;
 import gr.uoi.cse.countrygraph.loader.TableMetadataLoader;
 import gr.uoi.cse.countrygraph.loader.ResultSetMapperLoader;
@@ -17,7 +18,8 @@ public class GraphApplication extends Application
 {
 	private static final List<ApplicationLoader> APPLICATION_LOADERS = List.of(new TableMetadataLoader(),
 			new CountryCacheLoader(),
-			new ResultSetMapperLoader());
+			new ResultSetMapperLoader(),
+			new ExceptionHandlerLoader());
 	
     @Override
     public void start(Stage stage) throws IOException 
