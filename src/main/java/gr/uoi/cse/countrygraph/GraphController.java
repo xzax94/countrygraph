@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import gr.uoi.cse.countrygraph.chart.ChartGenerator;
 import gr.uoi.cse.countrygraph.chart.ChartGeneratorFactory;
 import gr.uoi.cse.countrygraph.chart.ChartType;
+import gr.uoi.cse.countrygraph.decorator.AggregateTimeChoiceBoxDecorator;
 import gr.uoi.cse.countrygraph.decorator.ChartTypeChoiceBoxDecorator;
 import gr.uoi.cse.countrygraph.decorator.MeasureNameChoiceBoxDecorator;
 import gr.uoi.cse.countrygraph.decorator.ViewDecorator;
@@ -25,11 +26,14 @@ import lombok.Data;
 @Data
 public class GraphController implements Initializable
 {
-	private static final List<ViewDecorator<GraphController>> VIEW_DECORATORS = List.of(new MeasureNameChoiceBoxDecorator(), new ChartTypeChoiceBoxDecorator());
+	private static final List<ViewDecorator<GraphController>> VIEW_DECORATORS = List.of(new MeasureNameChoiceBoxDecorator(), new ChartTypeChoiceBoxDecorator(), new AggregateTimeChoiceBoxDecorator());
 	private final List<MeasureRequest> measureRequestList = new ArrayList<>();
 	
 	@FXML
 	private ChoiceBox<String> measureNameChoiceBox;
+	
+	@FXML
+	private ChoiceBox<String> aggregateTimeChoiceBox;
 	
 	@FXML
 	private ListView<String> measureListView;
@@ -67,7 +71,9 @@ public class GraphController implements Initializable
 		final ChartType chartType = ChartType.findByName(chartTypeString);
 		final ChartGeneratorFactory chartGeneratorFactory = new ChartGeneratorFactory();
 		final ChartGenerator<?, ?> chartGenerator = chartGeneratorFactory.createNewInstance(chartType);
-		chartGenerator.generateChart(measureRequestList);
+		final String aggregateTimeString = aggregateTimeChoiceBox.getSelectionModel().getSelectedItem();
+		final int aggregateTimeDivider = Integer.parseInt(aggregateTimeString);
+		chartGenerator.generateChart(measureRequestList, aggregateTimeDivider);
 	}
 	
 	@FXML

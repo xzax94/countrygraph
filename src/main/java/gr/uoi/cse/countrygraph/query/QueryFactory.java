@@ -23,5 +23,4 @@ public final class QueryFactory implements Factory<String, String>
 		default -> String.format(QUERY_BY_YEAR_FORMAT, tableName);
 		};
 	}
-	
 }

@@ -68,7 +68,7 @@ public final class ScatterPlotGenerator extends ChartGenerator<Number, Number>
 	}
 
 	@Override
-	public List<Series<Number, Number>> createSeriesList(List<MeasureRequest> measureRequestList) 
+	public List<Series<Number, Number>> createSeriesList(List<MeasureRequest> measureRequestList, int aggregateYearDivider) 
 	{
 		final MeasureRequest firstMeasureRequest = measureRequestList.get(FIRST_MEASURE_INDEX);
 		final MeasureRequest secondMeasureRequest = measureRequestList.get(SECOND_MEASURE_INDEX);
@@ -84,8 +84,8 @@ public final class ScatterPlotGenerator extends ChartGenerator<Number, Number>
 	private final List<XYChart.Data<Number, Number>> createChartDataList(MeasureRequest firstMeasureRequest, MeasureRequest secondMeasureRequest)
 	{
 		final List<XYChart.Data<Number, Number>> chartDataList = new ArrayList<>();
-		final ScatterPlotQueryCreator SCATTER_PLOT_QUERY_CREATOR = new ScatterPlotQueryCreator();
-		final String query = SCATTER_PLOT_QUERY_CREATOR.createQuery(firstMeasureRequest, secondMeasureRequest);
+		final ScatterPlotQueryCreator scatterPlotQueryCreator = new ScatterPlotQueryCreator();
+		final String query = scatterPlotQueryCreator.createQuery(firstMeasureRequest, secondMeasureRequest);
 		
 		try(final Connection connection = ConnectionFactory.getInstance().createConnection();
 				final PreparedStatement preparedStatement = connection.prepareStatement(query);

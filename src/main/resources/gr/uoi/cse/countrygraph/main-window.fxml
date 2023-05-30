@@ -12,8 +12,11 @@
       <Label layoutX="23.0" layoutY="94.0" prefHeight="17.0" prefWidth="135.0" text="Select Measure Type" />
       <ChoiceBox fx:id="measureNameChoiceBox" layoutX="186.0" layoutY="90.0" prefHeight="25.0" prefWidth="187.0" />
       <ListView fx:id="measureListView" layoutX="76.0" layoutY="130.0" prefHeight="302.0" prefWidth="623.0" />
-      <Button layoutX="240.0" layoutY="465.0" mnemonicParsing="false" onAction="#onCreateGraphRequest" prefHeight="25.0" prefWidth="223.0" text="Create Graph" />
-      <ChoiceBox fx:id="chartTypeChoiceBox" layoutX="29.0" layoutY="465.0" prefHeight="25.0" prefWidth="187.0" />
-      <Button layoutX="483.0" layoutY="465.0" mnemonicParsing="false" onAction="#onClearMeasuresRequest" prefHeight="25.0" prefWidth="223.0" text="Clear Measures" />
+      <Button layoutX="572.0" layoutY="459.0" mnemonicParsing="false" onAction="#onCreateGraphRequest" prefHeight="25.0" prefWidth="156.0" text="Create Graph" />
+      <ChoiceBox fx:id="chartTypeChoiceBox" layoutX="82.0" layoutY="459.0" prefHeight="25.0" prefWidth="187.0" />
+      <Button layoutX="521.0" layoutY="90.0" mnemonicParsing="false" onAction="#onClearMeasuresRequest" prefHeight="25.0" prefWidth="150.0" text="Clear Measures" />
+      <ChoiceBox fx:id="aggregateTimeChoiceBox" layoutX="391.0" layoutY="459.0" prefWidth="150.0" />
+      <Label layoutX="14.0" layoutY="463.0" prefHeight="17.0" prefWidth="68.0" text="Chart type:" />
+      <Label layoutX="289.0" layoutY="463.0" prefHeight="17.0" prefWidth="87.0" text="Aggregate time:" />
    </children>
 </AnchorPane>
