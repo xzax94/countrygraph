@@ -25,7 +25,7 @@ public final class ExceptionManager implements UncaughtExceptionHandler
 		exceptionHandler.handleException(rootThrowable);
 	}
 	
-	public Throwable findRootCause(Throwable throwable) 
+	private final Throwable findRootCause(Throwable throwable) 
 	{
 	    if (throwable == null)
 	        return null;
